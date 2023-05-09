@@ -6,11 +6,13 @@ class Solution {
         else if(n==1){
             return 1;
         }
+        else{
         while(n>=2){
         return fib(n-1) + fib(n-2);
         }
         return 0;
         }
+    }
     
  
 }
