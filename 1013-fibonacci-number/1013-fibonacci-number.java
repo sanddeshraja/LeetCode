@@ -1,8 +1,9 @@
 class Solution {
+    Map<Integer,Integer> map = new HashMap<>();
+   
     public int fib(int n) {
-          Map<Integer,Integer> map = new HashMap<>();
-          map.put(0,0);
-          map.put(1,1);
+         map.put(0,0);
+        map.put(1,1);
             if(map.containsKey(n))
                 return map.get(n);
             else{
