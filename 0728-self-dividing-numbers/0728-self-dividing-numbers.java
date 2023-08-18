@@ -1,28 +1,38 @@
 class Solution {
     public List<Integer> selfDividingNumbers(int left, int right) {
-        List<Integer> list = new ArrayList<>();
-        int curr = left;
-        while(left <= right){
-            int lastDigit = Integer.MIN_VALUE;
-            boolean redFlag = false;
-            while(curr > 0){
-                lastDigit = curr % 10;
-                if(lastDigit == 0){
+        List<Integer> ans= new ArrayList<>();
+        while(left<=right)
+        {
+            int cur=left; //12
+            int lastDigit=0;
+            boolean isSelfDividing=false;
+            while(cur>0)
+            {
+                isSelfDividing=true;
+                lastDigit=cur%10;
+                if(lastDigit==0){
+                    left++;
+                    cur=0;
+                    isSelfDividing=false;
                     break;
+                    
                 }
-                if(!(left % lastDigit == 0)){
-                    redFlag = true;
-                    break;
-                }else{
-                    curr/=10;
+                if(left%lastDigit==0)
+            {
+                cur=cur/10;
+            }
+                else{
+                 left++;
+                 cur=0;
+                 isSelfDividing=false;
                 }
             }
-            int ans = left;
-            curr = left + 1;
-            left = curr;
-            if(redFlag == true || lastDigit == 0) continue;
-            list.add(ans);
+            if(cur==0 && isSelfDividing==true)
+            {
+                    ans.add(left);
+                    left++;
+            }
         }
-        return list;
+        return ans;
     }
 }
